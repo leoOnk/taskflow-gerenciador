@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TaskFlow - Sistema de gerenciamento de tarefas">
+    <title>TaskFlow | Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-content">
+            <div class="brand">
+                <h1>TaskFlow</h1>
+                <p>Gerencie suas tarefas de forma simples.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Dashboard -->
+        <section class="dashboard" aria-label="Resumo das tarefas">
+            <article class="dashboard-card">
+                <span class="dashboard-label">Total</span>
+                <strong id="total-tasks">0</strong>
+            </article>
+            <article class="dashboard-card">
+                <span class="dashboard-label">Pendentes</span>
+                <strong id="pending-tasks">0</strong>
+            </article>
+            <article class="dashboard-card">
+                <span class="dashboard-label">Em andamento</span>
+                <strong id="progress-tasks">0</strong>
+            </article>
+            <article class="dashboard-card">
+                <span class="dashboard-label">Concluídas</span>
+                <strong id="completed-tasks">0</strong>
+            </article>
+            <article class="dashboard-card">
+                <span class="dashboard-label">Atrasadas</span>
+                <strong id="overdue-tasks">0</strong>
+            </article>
+        </section>
+
+        <!-- Cadastro -->
+        <section class="task-form-section">
+            <div class="section-header">
+                <h2 id="form-title">Nova tarefa</h2>
+            </div>
+
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Título</label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        name="title"
+                        maxlength="100"
+                        placeholder="Digite o título da tarefa"
+                        required
+                    >
+                    <small id="title-error" class="form-error"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Descrição</label>
+                    <textarea
+                        id="task-description"
+                        name="description"
+                        maxlength="500"
+                        placeholder="Descreva a tarefa..."
+                    ></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-priority">Prioridade</label>
+                        <select id="task-priority" name="priority">
+                            <option value="BAIXA">Baixa</option>
+                            <option value="MEDIA" selected>Média</option>
+                            <option value="ALTA">Alta</option>
+                            <option value="URGENTE">Urgente</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-due-date">Data de vencimento</label>
+                        <input type="date" id="task-due-date" name="dueDate">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-task-btn" class="btn btn-primary">
+                        Adicionar tarefa
+                    </button>
+                    <button type="button" id="clear-filters" class="btn btn-secondary">
+                        Limpar filtros
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Lista e Filtros Unificados (Sem duplicidade) -->
+        <section class="tasks-section">
+            <div class="section-header">
+                <h2>Minhas tarefas</h2>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="search-task">Buscar</label>
+                    <input type="search" id="search-task" placeholder="Buscar tarefa...">
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status">
+                        <option value="TODAS">Todas</option>
+                        <option value="PENDENTE">Pendentes</option>
+                        <option value="EM_ANDAMENTO">Em andamento</option>
+                        <option value="CONCLUIDA">Concluídas</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-priority">Prioridade</label>
+                    <select id="filter-priority">
+                        <option value="TODAS">Todas</option>
+                        <option value="BAIXA">Baixa</option>
+                        <option value="MEDIA">Média</option>
+                        <option value="ALTA">Alta</option>
+                        <option value="URGENTE">Urgente</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort-tasks">Ordenar por</label>
+                    <select id="sort-tasks">
+                        <option value="RECENTES">Mais recentes</option>
+                        <option value="ANTIGAS">Mais antigas</option>
+                        <option value="VENCIMENTO">Vencimento</option>
+                        <option value="PRIORIDADE">Prioridade</option>
+                        <option value="TITULO">Título</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Containers de exibição de dados -->
+            <div id="tasks-container" class="tasks-container"></div>
+
+            <div id="empty-state" class="empty-state">
+                <h3>Nenhuma tarefa encontrada</h3>
+                <p>Crie sua primeira tarefa para começar.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts vitais carregados corretamente no fechamento do app -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
