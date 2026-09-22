@@ -1,7 +1,5 @@
 # ⚡ TaskFlow — Gerenciador de Tarefas com Qualidade de Software Integrada
 
-[![Acesse o Projeto](https://shields.io)]
-
 
 O **TaskFlow** é uma aplicação web moderna e responsiva voltada para o gerenciamento eficiente de tarefas diárias. O grande diferencial deste projeto não está apenas na sua interface limpa e intuitiva, mas sim na sua arquitetura de código guiada por boas práticas de engenharia de software, contando com uma esteira robusta de **Testes Unitários** e **Testes de Interface Automatizados (End-to-End)**.
 
